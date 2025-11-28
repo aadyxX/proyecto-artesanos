@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- FUNCIÓN PARA OBTENER EL NOMBRE DEL USUARIO ---
     async function fetchUserName() {
         try {
-            const response = await fetch('http://localhost:8000/api/usuarios-jwt/miUsuario', {
+            const API_BASE_URL = window.location.origin;
+// ... y luego en la petición ...
+const response = await fetch(`${API_BASE_URL}/api/usuarios-jwt/miUsuario`, {
+
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`

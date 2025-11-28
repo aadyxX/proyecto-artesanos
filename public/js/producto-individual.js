@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const API_BASE_URL = window.location.origin;
+
     cargarProducto();
     cargarOpiniones(); // Cargar opiniones al cargar la página
     cargarProductosSimilares(); // Cargar productos similares al cargar la página
@@ -62,6 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function cargarProducto() {
+    const API_BASE_URL = window.location.origin;
+
     const urlParams = new URLSearchParams(window.location.search);
     const productoId = urlParams.get("id");
 
@@ -70,7 +74,7 @@ function cargarProducto() {
         return;
     }
 
-    fetch(`/api/productos/${productoId}`)
+    fetch(`${API_BASE_URL}/api/productos/${productoId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Error al cargar el producto");
@@ -117,7 +121,7 @@ function cargarProducto() {
                     imagenes.forEach((imagen, index) => {
                         const colDiv = document.createElement('div');
                         colDiv.classList.add('col-3');
-
+                        
                         const img = document.createElement('img');
                         img.src = imagen.imagen_base64 || `img/${imagen.ruta_imagen}`;
                         img.alt = `${producto.Nombre_Producto} vista ${index + 1}`;
@@ -146,7 +150,7 @@ function cargarProducto() {
                 } else if (mainProductImage && imagenes.length > 0) {
                     // Fallback if no thumbnails container, just set main image
                     const primaryImage = imagenes.find(img => img.es_principal) || imagenes[0];
-                    mainProductImage.src = primaryImage.imagen_base64 || `img/${primaryImage.ruta_imagen}`;
+                    mainProductImage.src = primaryImage.imagen_base64 || `${API_BASE_URL}/img/${primaryImage.ruta_imagen}`;
                     mainProductImage.alt = producto.Nombre_Producto;
                 }
 
@@ -160,6 +164,8 @@ function cargarProducto() {
 }
 
 function cargarOpiniones() {
+    const API_BASE_URL = window.location.origin;
+
     const urlParams = new URLSearchParams(window.location.search);
     const productoId = urlParams.get("id");
 
@@ -170,7 +176,7 @@ function cargarOpiniones() {
         return;
     }
 
-    fetch(`/api/productos/${productoId}/resenas`)
+    fetch(`${API_BASE_URL}/api/productos/${productoId}/resenas`)
         .then(response => {
             console.log("Respuesta de la API de opiniones:", response);
             if (!response.ok) {
@@ -225,7 +231,9 @@ function cargarOpiniones() {
 }
 
 function agregarAlCarrito(productId, quantity) {
-    fetch("/api/carrito/add", {
+    const API_BASE_URL = window.location.origin;
+
+    fetch(`${API_BASE_URL}/api/carrito/add`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -273,6 +281,8 @@ function getCsrfToken() {
 }
 
 function cargarProductosSimilares() {
+    const API_BASE_URL = window.location.origin;
+
     const urlParams = new URLSearchParams(window.location.search);
     const productoId = urlParams.get("id");
 
@@ -281,7 +291,7 @@ function cargarProductosSimilares() {
         return;
     }
 
-    fetch(`/api/productos/${productoId}/similares`)
+    fetch(`${API_BASE_URL}/api/productos/${productoId}/similares`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Error al cargar productos similares");
@@ -300,7 +310,7 @@ function cargarProductosSimilares() {
 
                         colDiv.innerHTML = `
                             <div class="card h-100 shadow-sm">
-                                <img src="${product.imagen || 'https://via.placeholder.com/150?text=No+Image'}" class="card-img-top" alt="${product.nombre}">
+                                <img src="${product.imagen ? API_BASE_URL + '/' + product.imagen : 'https://via.placeholder.com/150?text=No+Image'}" class="card-img-top" alt="${product.nombre}">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">${product.nombre}</h5>
                                     <p class="card-text text-muted">${product.artesano}</p>

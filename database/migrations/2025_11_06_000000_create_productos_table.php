@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('productos', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // La columna 'id' que la tabla 'carritos' necesita.
+            $table->string('nombre');
+            $table->text('descripcion')->nullable();
+            $table->decimal('precio', 8, 2);
+            $table->integer('stock')->default(0);
+            $table->string('imagen_url')->nullable();
             $table->timestamps();
         });
     }

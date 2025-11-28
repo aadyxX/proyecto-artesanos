@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const API_BASE_URL = window.location.origin;
+
     // Cargar el menú de categorías en la barra lateral
     cargarMenuCategorias();
 
@@ -8,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Si hay un ID de categoría en la URL, cargar esa categoría y sus productos
     if (categoriaId) {
-        cargarCategoriaYProductos(categoriaId);
+        cargarCategoriaYProductos(categoriaId, API_BASE_URL);
     } else {
         // Opcional: Cargar una categoría por defecto o mostrar un mensaje
         const gridProductos = document.querySelector("#grid-productos");
@@ -22,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * Carga la información de una categoría y la lista de sus productos.
  * @param {number} categoriaId - El ID de la categoría a cargar.
  */
-function cargarCategoriaYProductos(categoriaId) {
+function cargarCategoriaYProductos(categoriaId, API_BASE_URL) {
     const tituloRosa = document.getElementById("titulo-rosa");
     const tituloVerde = document.getElementById("titulo-verde");
     const descripcion = document.getElementById("descripcion-categoria");
@@ -31,7 +33,7 @@ function cargarCategoriaYProductos(categoriaId) {
     if (!tituloRosa || !tituloVerde || !descripcion || !gridProductos) return;
 
     // 1. Cargar datos de la categoría (para el título y descripción)
-    fetch(`/api/categorias/${categoriaId}`)
+    fetch(`${API_BASE_URL}/api/categorias/${categoriaId}`)
         .then(res => {
             if (!res.ok) throw new Error("Error al obtener la categoría");
             return res.json();
@@ -57,7 +59,7 @@ function cargarCategoriaYProductos(categoriaId) {
     // 2. Cargar productos de la categoría
     gridProductos.innerHTML = `<p>Cargando productos...</p>`;
 
-    fetch(`/api/categorias/${categoriaId}/productos`)
+    fetch(`${API_BASE_URL}/api/categorias/${categoriaId}/productos`)
         .then(res => {
             if (!res.ok) {
                 if (res.status === 404) {
@@ -84,7 +86,7 @@ function cargarCategoriaYProductos(categoriaId) {
                 card.className = "col";
                 card.innerHTML = `
                     <div class="card h-100 producto-card">
-                        <img src="/storage/${producto.imagen_principal}" class="card-img-top" alt="${producto.nombre}">
+                        <img src="${API_BASE_URL}/storage/${producto.imagen_principal}" class="card-img-top" alt="${producto.nombre}">
                         <div class="card-body">
                             <h5 class="card-title">${producto.nombre}</h5>
                             <p class="card-text text-muted">${producto.categoria_nombre}</p>
@@ -108,11 +110,12 @@ function cargarCategoriaYProductos(categoriaId) {
  * Carga la lista de categorías en el menú lateral.
  */
 function cargarMenuCategorias() {
+    const API_BASE_URL = window.location.origin;
     const lista = document.getElementById("menu-categorias");
     if (!lista) return;
 
     // Usamos la ruta que ya tenías para obtener todas las categorías
-    fetch("/api/categorias")
+    fetch(`${API_BASE_URL}/api/categorias`)
         .then(res => {
             if (!res.ok) throw new Error("Error al obtener las categorías");
             return res.json();
