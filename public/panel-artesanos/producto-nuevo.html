@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Artesano - Nuevo Producto</title>
+    <link rel="stylesheet" href="css/panel.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="csrf-token" content="">
+</head>
+<body>
+    <div class="panel-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>Arte<span>Misa</span></h2>
+            </div>
+            <div class="artesano-info">
+                <div class="artesano-avatar">
+                    <img src="img/avatar" alt="Avatar">
+                </div>
+                <div class="artesano-nombre">
+                    <h3 id="nombre-artesano">Cargando...</h3>
+                    <p id="negocio-artesano">Cargando...</p>
+                </div>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="dashboard.html"><img src="img/dashboard.svg" alt="Dashboard"> Dashboard</a></li>
+                    <li  class="active"><a href="productos.html"><img src="img/productos.svg" alt="Productos"> Mis productos</a></li>
+                    <li><a href="pedidos.html"><img src="img/pedidos.svg" alt="Pedidos"> Pedidos</a></li>
+                    <li><a href="ventas.html"><img src="img/ventas.svg" alt="Ventas"> Ventas</a></li>
+                    <li><a href="perfil.html"><img src="img/perfil.svg" alt="Perfil"> Mi perfil</a></li>
+                    <li class="menu-footer"><a href="#"><img src="img/logout.svg" alt="Salir"> Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1 id="titulo-pagina">Nuevo Producto</h1>
+                </div>
+                <div class="top-bar-actions">
+                    <div class="notifications">
+                        <img src="img/notis.svg" alt="Notificaciones">
+                        <!-- <span class="badge"></s]an> -->
+                    </div>
+                    <div class="user-menu">
+                        <img src="img/avatar" alt="Usuario">
+                        <span>Mi cuenta</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="producto-form-content">
+                <div id="alert-success" class="alert alert-success">
+                    Producto guardado correctamente.
+                </div>
+                
+                <div id="alert-error" class="alert alert-danger">
+                    Ha ocurrido un error al guardar el producto.
+                </div>
+
+                <form id="producto-form" class="producto-form">
+                    <input type="hidden" id="producto-id" name="id" value="">
+                    
+                    <div class="form-grid">
+                        <div class="form-column">
+                            <div class="form-section">
+                                <h2>Información básica</h2>
+                                
+                                <div class="form-group">
+                                    <label for="nombre">Nombre del producto<span class="required">*</span></label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="categoria">Categoría<span class="required">*</span></label>
+                                    <select id="categoria" name="categoria_id" class="form-control" required>
+                                        <option value="">Selecciona una categoría</option>
+                                        <!-- Las categorías se cargarán dinámicamente -->
+                                    </select>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="precio">Precio (MXN)<span class="required">*</span></label>
+                                        <input type="number" id="precio" name="precio" class="form-control" min="0" step="0.01" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="stock">Stock<span class="required">*</span></label>
+                                        <input type="number" id="stock" name="stock" class="form-control" min="0" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="descripcion">Descripción<span class="required">*</span></label>
+                                    <textarea id="descripcion" name="descripcion" class="form-control" rows="5" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="destacado" name="destacado" class="form-check-input">
+                                        <label for="destacado" class="form-check-label"></label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="estado">Estado<span class="required">*</span></label>
+                                    <select id="estado" name="estado" class="form-control" required>
+                                        <option value="activo">Activo</option>
+                                        <option value="inactivo">Inactivo</option>
+                                        <option value="agotado">Agotado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-column">
+                            <div class="form-section">
+                                <h2>Imágenes del producto</h2>
+                                
+                                <div class="form-group">
+                                    <label>Imagen principal<span class="required">*</span></label>
+                                    <div class="image-upload-container" id="imagen-principal-container">
+                                        <div class="image-upload">
+                                            <input type="file" id="imagen-principal" name="imagen_principal" accept="image/*" required>
+                                            <div class="upload-placeholder">
+                                                <img src="img/upload.svg" alt="Subir">
+                                                <p>Haz clic para subir o arrastra una imagen</p>
+                                                <span>JPG, PNG o GIF (Máx. 5MB)</span>
+                                            </div>
+                                            <div class="image-preview" id="preview-principal" style="display: none;">
+                                                <img src="/placeholder.svg" alt="Vista previa">
+                                                <button type="button" class="remove-image" data-target="imagen-principal">
+                                                    <img src="img/trash.svg" alt="Eliminar">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Imágenes adicionales (máximo 4)</label>
+                                    <div class="additional-images-container" id="imagenes-adicionales-container">
+                                        <div class="additional-images-grid" id="imagenes-adicionales-grid">
+                                            <div class="image-upload">
+                                                <input type="file" class="imagen-adicional" name="imagenes_adicionales[]" accept="image/*">
+                                                <div class="upload-placeholder">
+                                                    <img src="img/plus.svg" alt="Añadir">
+                                                </div>
+                                                <div class="image-preview" style="display: none;">
+                                                    <img src="/placeholder.svg" alt="Vista previa">
+                                                    <button type="button" class="remove-image">
+                                                        <img src="img/trash.svg" alt="Eliminar">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="image-upload">
+                                                <input type="file" class="imagen-adicional" name="imagenes_adicionales[]" accept="image/*">
+                                                <div class="upload-placeholder">
+                                                    <img src="img/plus.svg" alt="Añadir">
+                                                </div>
+                                                <div class="image-preview" style="display: none;">
+                                                    <img src="/placeholder.svg" alt="Vista previa">
+                                                    <button type="button" class="remove-image">
+                                                        <img src="img/trash.svg" alt="Eliminar">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="image-upload">
+                                                <input type="file" class="imagen-adicional" name="imagenes_adicionales[]" accept="image/*">
+                                                <div class="upload-placeholder">
+                                                    <img src="img/plus.svg" alt="Añadir">
+                                                </div>
+                                                <div class="image-preview" style="display: none;">
+                                                    <img src="/placeholder.svg" alt="Vista previa">
+                                                    <button type="button" class="remove-image">
+                                                        <img src="img/trash.svg" alt="Eliminar">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="image-upload">
+                                                <input type="file" class="imagen-adicional" name="imagenes_adicionales[]" accept="image/*">
+                                                <div class="upload-placeholder">
+                                                    <img src="img/plus.svg" alt="Añadir">
+                                                </div>
+                                                <div class="image-preview" style="display: none;">
+                                                    <img src="/placeholder.svg" alt="Vista previa">
+                                                    <button type="button" class="remove-image">
+                                                        <img src="img/trash.svg" alt="Eliminar">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <a href="productos.html" class="btn-secondary">Cancelar</a>
+                        <button type="submit" class="btn-primary" id="btn-guardar">Guardar Producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/producto-form.js"></script>
+</body>
+</html>

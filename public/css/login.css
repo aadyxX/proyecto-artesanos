@@ -1,0 +1,95 @@
+/* login.css */
+
+#login-container {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: linear-gradient(to right, #f8bbd0, #f48fb1); */
+    font-family: 'Poppins', sans-serif;
+}
+
+#form-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 420px;
+    transition: all 0.3s ease-in-out;
+}
+
+#form-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#loginForm input,
+#registerForm input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+}
+
+#loginForm input:focus,
+#registerForm input:focus {
+    border-color: #e0028b;
+    outline: none;
+}
+
+#loginForm button,
+#registerForm button {
+    width: 100%;
+    padding: 14px;
+    background-color: #e0028b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#loginForm button:hover,
+#registerForm button:hover {
+    background-color: #d81b60;
+}
+
+.toggle-text {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.toggle-text a {
+    color: #e0028b;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.toggle-text a:hover {
+    text-decoration: underline;
+}
+
+.success,
+.error {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}

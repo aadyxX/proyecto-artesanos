@@ -1,0 +1,265 @@
+/*
+========================================
+ Estilos para la Página Nosotros
+========================================
+*/
+
+/* Variables de colores consistentes con el proyecto */
+:root {
+    --primary-color: #e0028b;
+    --secondary-color: #a2c443;
+    --dark-color: #2d2016;
+    --light-bg: #f8f6f1;
+}
+
+/* Sección Hero Nosotros */
+.nosotros-hero {
+    background-color: var(--light-bg);
+    padding: 5rem 0;
+}
+
+.nosotros-hero .hero-content {
+    text-align: center;
+}
+
+.nosotros-hero .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.nosotros-hero .hero-subtitle {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.nosotros-hero .hero-divider {
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 0 auto 2rem;
+}
+
+/* Sección Nuestra Historia */
+.nuestra-historia {
+    padding: 5rem 0;
+    background-color: #fff;
+}
+
+.nuestra-historia .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.nuestra-historia .historia-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.nuestra-historia .historia-text {
+    flex: 1;
+}
+
+.nuestra-historia .historia-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.nuestra-historia .historia-image {
+    flex: 1;
+}
+
+.nuestra-historia .historia-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Sección Misión y Visión */
+.mision-vision {
+    padding: 5rem 0;
+    background-color: var(--light-bg);
+}
+
+.mision-vision .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.mision-vision .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.mision-vision .card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mision-vision .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.mision-vision .card-icon {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.mision-vision .card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.mision-vision .card-text {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Sección Nuestro Equipo */
+.nuestro-equipo {
+    padding: 5rem 0;
+    background-color: #fff;
+}
+
+.nuestro-equipo .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.nuestro-equipo .equipo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.nuestro-equipo .equipo-member {
+    text-align: center;
+    background-color: var(--light-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.nuestro-equipo .equipo-member:hover {
+    transform: translateY(-5px);
+}
+
+.nuestro-equipo .member-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.nuestro-equipo .member-role {
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.nuestro-equipo .member-bio {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Sección Valores */
+.valores {
+    padding: 5rem 0;
+    background-color: var(--light-bg);
+}
+
+.valores .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.valores .valores-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.valores .valor-item {
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.valores .valor-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.valores .valor-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.valores .valor-description {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nosotros-hero .hero-title {
+        font-size: 2rem;
+    }
+
+    .nuestra-historia .historia-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .mision-vision .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .nuestro-equipo .equipo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .valores .valores-list {
+        grid-template-columns: 1fr;
+    }
+}

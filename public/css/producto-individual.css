@@ -1,0 +1,92 @@
+/* Estilos para producto-individual.html */
+
+:root {
+    --bs-primary-rgb: 224, 2, 139;
+    --bs-secondary-rgb: 162, 196, 67;
+    --bs-dark-rgb: 45, 32, 22;
+}
+
+.divider-primary {
+    background-color: #e0028b;
+    height: 2px;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.product-thumbnails .thumbnail {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.product-thumbnails .thumbnail:hover,
+.product-thumbnails .thumbnail.active {
+    border-color: #e0028b;
+}
+
+.quantity-selector .form-control {
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.quantity-selector input::-webkit-outer-spin-button,
+.quantity-selector input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btn-primary {
+    background-color: #e0028b !important;
+    border-color: #e0028b !important;
+}
+
+.btn-primary:hover {
+    background-color: #c7027a !important;
+    border-color: #c7027a !important;
+}
+
+.btn-secondary {
+    background-color: #a2c443 !important;
+    border-color: #a2c443 !important;
+}
+
+.btn-secondary:hover {
+    background-color: #95b52d !important;
+    border-color: #95b52d !important;
+}
+
+.nav-tabs .nav-link.active {
+    color: #e0028b !important;
+    border-color: #e0028b #e0028b #fff !important;
+}
+
+.nav-tabs .nav-link {
+    color: #333;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: #eee #eee #dee !important;
+}
+
+.btn-ver-producto {
+    color: #a2c443;
+    border-color: #a2c443;
+}
+
+.btn-ver-producto:hover {
+    color: #fff;
+    background-color: #a2c443;
+    border-color: #a2c443;
+}
+
+
+.mt-5 h2.text-center {
+    color: #e0028b;
+}

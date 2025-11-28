@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Artesano - Mis Productos</title>
+    <link rel="stylesheet" href="css/panel.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="csrf-token" content="">
+</head>
+<body>
+    <div class="panel-container">
+        <div class="sidebar">
+            <div class="logo">
+                <h2>Arte<span>Misa</span></h2>
+            </div>
+            <div class="artesano-info">
+                <div class="artesano-avatar">
+                    <img src="img/avatar" alt="Avatar">
+                </div>
+                <div class="artesano-nombre">
+                    <h3 id="nombre-artesano">Cargando...</h3>
+                    <p id="negocio-artesano">Cargando...</p>
+                </div>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="dashboard.html"><img src="img/dashboard.svg" alt="Dashboard"> Dashboard</a></li>
+                    <li class="active"><a href="productos.html"><img src="img/productos.svg" alt="Productos"> Mis productos</a></li>
+                    <li><a href="pedidos.html"><img src="img/pedidos.svg" alt="Pedidos"> Pedidos</a></li>
+                    <li><a href="ventas.html"><img src="img/ventas.svg" alt="Ventas"> Ventas</a></li>
+                    <li><a href="perfil.html"><img src="img/perfil.svg" alt="Perfil"> Mi perfil</a></li>
+                    <li class="menu-footer"><a href="#"><img src="img/logout.svg" alt="Salir"> Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Mis Productos</h1>
+                </div>
+                <div class="top-bar-actions">
+                    <div class="notifications">
+                        <img src="img/notis.svg" alt="Notificaciones">
+                        <!-- <span class="badge"></s]an> -->
+                    </div>
+                    <div class="user-menu">
+                        <img src="img/avatar" alt="Usuario">
+                        <span>Mi cuenta</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="productos-content">
+                <div id="mensaje-eliminacion" class="alert alert-success" style="display: none;">
+                    Producto eliminado correctamente
+                </div>
+                <div class="action-bar">
+                    <div class="search-container">
+                        <input type="text" id="buscar-producto" placeholder="Buscar producto...">
+                        <button id="btn-buscar"><img src="img/buscar.svg" alt="Buscar"></button>
+                    </div>
+                    <div class="filter-container">
+                        <select id="filtro-categoria">
+                            <option value="">Todas las categorías</option>
+
+                        </select>
+                        <select id="filtro-estado">
+                            <option value="">Todos los estados</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                            <option value="agotado">Agotado</option>
+                        </select>
+                    </div>
+                    <a href="producto-nuevo.html" class="btn-primary">
+                        <img src="img/mas.svg" alt="Añadir">
+                        Añadir Producto
+                    </a>
+                </div>
+
+                <div class="productos-grid" id="productos-container">
+                    <div class="producto-card producto-placeholder">
+                        <div class="producto-imagen placeholder"></div>
+                        <div class="producto-info">
+                            <div class="producto-nombre placeholder"></div>
+                            <div class="producto-precio placeholder"></div>
+                            <div class="producto-categoria placeholder"></div>
+                            <div class="producto-acciones placeholder"></div>
+                        </div>
+                    </div>
+                    <div class="producto-card producto-placeholder">
+                        <div class="producto-imagen placeholder"></div>
+                        <div class="producto-info">
+                            <div class="producto-nombre placeholder"></div>
+                            <div class="producto-precio placeholder"></div>
+                            <div class="producto-categoria placeholder"></div>
+                            <div class="producto-acciones placeholder"></div>
+                        </div>
+                    </div>
+                    <div class="producto-card producto-placeholder">
+                        <div class="producto-imagen placeholder"></div>
+                        <div class="producto-info">
+                            <div class="producto-nombre placeholder"></div>
+                            <div class="producto-precio placeholder"></div>
+                            <div class="producto-categoria placeholder"></div>
+                            <div class="producto-acciones placeholder"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination" id="paginacion">
+                    <button class="pagination-btn" id="prev-page" disabled>
+                        <img src="img/anterior.svg" alt="Anterior">
+                    </button>
+                    <div class="pagination-info">
+                        Página <span id="pagina-actual">1</span> de <span id="total-paginas">1</span>
+                    </div>
+                    <button class="pagination-btn" id="next-page" disabled>
+                        <img src="img/siguiente.svg" alt="Siguiente">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-eliminar">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Eliminar producto</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer.</p>
+                <div class="producto-eliminar-info">
+                    <img id="producto-eliminar-imagen" src="img/product-placeholder.jpg" alt="Producto">
+                    <div>
+                        <h3 id="producto-eliminar-nombre">Nombre del producto</h3>
+                        <p id="producto-eliminar-categoria">Categoría</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelar-eliminar">Cancelar</button>
+                <button class="btn-danger" id="confirmar-eliminar">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/productos.js"></script>
+    
+</body>
+</html>

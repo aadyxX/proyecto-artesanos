@@ -1,0 +1,251 @@
+/*
+========================================
+ Estilos Generales y Variables
+========================================
+*/
+:root {
+    --bs-primary-rgb: 224, 2, 139;
+    --bs-secondary-rgb: 162, 196, 67;
+    --bs-dark-rgb: 45, 32, 22;
+}
+
+
+.divider-primary {
+    background-color: #e0028b;
+    height: 2px;
+}
+
+/* .form-control:focus {
+    border-color: #e0028b;
+    box-shadow: 0 0 0 0.25rem rgba(224, 2, 139, 0.25);
+} */
+
+/*
+========================================
+ Estilos de la Barra de Navegación (Header)
+========================================
+*/
+header .nav-link {
+    color: #333;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+header .nav-link:hover {
+    color: #e0028b;
+}
+
+/*
+========================================
+ Estilos de la Sección Hero
+========================================
+*/
+.hero {
+    background-color: #f8f6f1;
+}
+
+.hero .hero-side-line {
+    width: 2px;
+    height: 200px;
+    background-color: #e0028b;
+}
+
+.hero .hero-divider {
+    height: 1px;
+    width: 50px;
+    background-color: #2d2016;
+}
+
+/*
+========================================
+ Estilos de la Sección Catálogo
+========================================
+*/
+/* linea */
+.explora-catalogo .catalog-accent-line {
+    height: 40px;
+    background-color: #e0028b;
+    z-index: 1;
+}
+
+.explora-catalogo .category-item {
+    z-index: 2;
+}
+
+.explora-catalogo .card {
+    transition: all 0.3s ease;
+    /* border: none; */
+    min-height: 350px;
+    max-height: 350px;
+}
+
+.explora-catalogo .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.explora-catalogo .card-img-cover {
+    object-fit: cover;
+    height: 100%;
+}
+
+.explora-catalogo .card-img-overlay {
+    background-color: rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.explora-catalogo .card:hover .card-img-overlay {
+    background-color: rgba(224, 2, 139, 0.7) !important;
+}
+
+
+
+.explora-catalogo .pagination-link.active {
+    background-color: #a2c443 !important;
+    border-color: #a2c443 !important;
+    color: white !important;
+}
+
+/* botn todas las categorias */
+.explora-catalogo .btn-secondary {
+    --bs-btn-bg: #a2c443;
+    --bs-btn-border-color: #a2c443;
+    --bs-btn-hover-bg: #95b52d;
+    --bs-btn-hover-border-color: #95b52d;
+}
+
+/*
+========================================
+ Estilos de la Sección Más Vendidos
+========================================
+*/
+.bg-light .card {
+    transition: all 0.3s ease;
+}
+
+.bg-light .card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-light .card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.bg-light .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.bg-light .card .btn-secondary {
+    width: 40px;
+    height: 40px;
+    --bs-btn-bg: #a2c443;
+    --bs-btn-border-color: #a2c443;
+    --bs-btn-hover-bg: #95b52d;
+    --bs-btn-hover-border-color: #95b52d;
+}
+
+.bg-light + .text-center .btn-secondary {
+    --bs-btn-bg: #a2c443;
+    --bs-btn-border-color: #a2c443;
+    --bs-btn-hover-bg: #95b52d;
+    --bs-btn-hover-border-color: #95b52d;
+}
+
+/*
+========================================
+ Estilos de Métodos de Pago
+========================================
+*/
+.payment-section .side-line {
+    width: 5px;
+    background-color: #e0028b;
+}
+
+.payment-section .payment-icon {
+    height: 40px;
+    filter: grayscale(20%);
+}
+
+/*
+========================================
+ Estilos de la Sección de Contacto
+========================================
+*/
+.contact-section .contact-info-box {
+    background-color: #f8f6f1;
+}
+
+.contact-section .icon-wrapper {
+    width: 40px;
+    height: 40px;
+}
+
+.contact-section .icon-wrapper.phone {
+    background-color: #a4c639;
+}
+.contact-section .icon-wrapper.email {
+    background-color: #e0028b;
+}
+
+.contact-section .btn-dark {
+    background-color: #2d2016 !important;
+}
+
+.contact-section .bottom-divider {
+    height: 3px;
+    background-color: #e0028b;
+}
+
+.contact-section .decorative-square {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(233, 30, 99, 0.1);
+    z-index: -1;
+}
+
+/*
+========================================
+ Estilos del Footer
+========================================
+*/
+footer.bg-dark .text-muted,
+footer.bg-dark a.text-muted {
+    color: #ced4da !important;
+}
+
+footer.bg-dark a.text-muted:hover,
+footer.bg-dark a.text-secondary:hover {
+    color: #e0028b !important;
+}
+
+footer.bg-dark .btn-outline-secondary {
+    --bs-btn-color: #ced4da;
+    --bs-btn-border-color: #ced4da;
+    --bs-btn-hover-bg: #ced4da;
+    --bs-btn-hover-border-color: #ced4da;
+    --bs-btn-hover-color: #2d2016;
+}
+
+/*
+========================================
+ Estilos de la Sección de Mapa
+========================================
+*/
+.map-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 40%;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}

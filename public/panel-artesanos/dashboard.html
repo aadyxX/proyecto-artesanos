@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de artesano</title>
+    <link rel="stylesheet" href="css/panel.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="csrf-token" content="">
+    <script src="js/auth.js"></script> <!-- GUARDIÁN DE RUTA -->
+</head>
+<body>
+    <div class="panel-container">
+
+        <div class="sidebar">
+            <div class="logo">
+                <h2>Arte<span>Misa</span></h2>
+            </div>
+            <div class="artesano-info">
+                <div class="artesano-avatar">
+                    <img src="img/avatar" alt="Avatar">
+                </div>
+                <div class="artesano-nombre">
+                    <h3 id="nombre-artesano">Cargando...</h3>
+                    <p id="negocio-artesano">Cargando...</p>
+                </div>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="active"><a href="dashboard.html"><img src="img/dashboard.svg" alt="Dashboard">Dashboard</a></li>
+                    <li><a href="productos.html"><img src="img/productos.svg" alt="Productos"> Mis productos</a></li>
+                    <li><a href="pedidos.html"><img src="img/pedidos.svg" alt="Pedidos"> Pedidos</a></li>
+                    <li><a href="ventas.html"><img src="img/ventas.svg" alt="Ventas"> Ventas</a></li>
+                    <li><a href="perfil.html"><img src="img/perfil.svg" alt="Perfil"> Mi perfil</a></li>
+                    <li class="menu-footer"><a href="#" id="logout-button"><img src="img/logout.svg" alt="Salir"> Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="top-bar-actions">
+                    <div class="notifications">
+                        <img src="img/notis.svg" alt="Notificaciones">
+                    </div>
+                    <div class="user-menu">
+                        <img src="img/avatar" alt="Usuario">
+                        <span>Mi cuenta</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="summary-cards">
+                    <div class="card">
+                        <div class="card-icon products">
+                            <img src="img/productos.svg" alt="Productos">
+                        </div>
+                        <div class="card-content">
+                            <h3>Productos</h3>
+                            <p class="card-value" id="total-productos">0</p>
+                            <!-- <p class="card-description">Total de productos</p> -->
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon orders">
+                            <img src="img/pedidos.svg" alt="Pedidos">
+                        </div>
+                        <div class="card-content">
+                            <h3>Pedidos</h3>
+                            <p class="card-value" id="total-pedidos">0</p>
+                            <!-- <p class="card-description">Pedidos pendientes</p> -->
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon sales">
+                            <img src="img/ventas.svg" alt="Ventas">
+                        </div>
+                        <div class="card-content">
+                            <h3>Ventas</h3>
+                            <p class="card-value" id="total-ventas">$0.00</p>
+                            <!-- <p class="card-description">Este mes</p> -->
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon views">
+                            <img src="img/ver.svg" alt="Visitas">
+                        </div>
+                        <div class="card-content">
+                            <h3>Visitas</h3>
+                            <p class="card-value" id="total-visitas">0</p>
+                            <!-- <p class="card-description">Este mes</p> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2>Opciones rápidas</h2>
+                    <div class="actions-grid">
+                        <a href="producto-nuevo.html" class="action-card">
+                            <div class="action-icon">
+                                <img src="img/mas.svg" alt="Añadir producto">
+                            </div>
+                            <h3>Añadir producto</h3>
+                            <p>Crea un nuevo producto para tu tienda</p>
+                        </a>
+                        <a href="pedidos.html" class="action-card">
+                            <div class="action-icon">
+                                <img src="img/gestion-pedidos.svg" alt="Gestionar pedidos">
+                            </div>
+                            <h3>Gestionar pedidos</h3>
+                            <p>Revisa y actualiza tus pedidos pendientes</p>
+                        </a>
+                        <a href="perfil.html" class="action-card">
+                            <div class="action-icon">
+                                <img src="img/editar.svg" alt="Actualizar perfil">
+                            </div>
+                            <h3>Actualizar perfil</h3>
+                            <p>Mantén tu información actualizada</p>
+                        </a>
+                        <a href="#" class="action-card">
+                            <div class="action-icon">
+                                <img src="img/ayuda.svg" alt="Ayuda">
+                            </div>
+                            <h3>Centro de ayuda</h3>
+                            <p>Resuelve tus dudas y consultas</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="recent-orders">
+                    <div class="section-header">
+                        <h2>Últimos pedidos</h2>
+                        <a href="pedidos.html" class="view-all">Ver todos</a>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID Pedido</th>
+                                    <th>Cliente</th>
+                                    <th>Fecha</th>
+                                    <th>Productos</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-pedidos">
+                                <tr>
+                                    <td colspan="7" class="no-data">No hay pedidos recientes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
