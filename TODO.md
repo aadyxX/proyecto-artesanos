@@ -1,20 +1,15 @@
-# TODO: Fix Shopping Cart Display
+# TODO: Corregir rutas de fetch para servidor alwaysdata.net
 
-- [x] Update CarritoController index method to use the provided SQL query for fetching cart items
-- [x] Add cart item ID (cp.id) and product ID (p.id) to the query
-- [x] Format the response to include items with id, cantidad, subtotal, and producto details
-- [x] Calculate total by summing subtotal_item
-- [x] Handle image URL formatting (use default if no image)
+## Archivos a editar:
+- [x] public/js/login.js: Cambiar API_URL de localhost a dinámico
+- [x] public/js/checkout.js: Cambiar URLs de fetch de localhost a dinámico y URLs de imágenes
+- [x] public/js/carrito.js: Cambiar URLs de fetch de localhost a dinámico y URLs de imágenes
+- [x] public/js/script.js: Cambiar ruta de categorias.php a /api/categorias
 
-# TODO: Implement Checkout Process
-
-- [x] Create CheckoutController with index and store methods
-- [x] Add checkout routes to api.php
-- [x] Create checkout.html page with form for shipping data and payment method selection
-- [x] Create checkout.css for styling
-- [x] Create checkout.js for frontend logic
-- [x] Modify carrito.html to redirect to checkout.html on "Finalizar compra" button click
-- [x] Implement order creation grouped by artisan
-- [x] Implement stock deduction on successful purchase
-- [x] Clear cart after successful purchase
-- [x] Add validation for stock availability before processing
+## Detalles de cambios:
+1. login.js: const API_URL = "http://localhost:8000/api/usuarios-jwt"; → const API_URL = window.location.origin + "/api/usuarios-jwt";
+2. checkout.js: fetch('http://localhost:8000/api/usuarios-jwt/checkout' → fetch(`${window.location.origin}/api/usuarios-jwt/checkout`
+3. checkout.js: img src="http://localhost:8000${item.producto.imagen_url}" → img src="${window.location.origin}${item.producto.imagen_url}"
+4. carrito.js: fetch('http://localhost:8000/api/usuarios-jwt/carrito' → fetch(`${window.location.origin}/api/usuarios-jwt/carrito`
+5. carrito.js: img src="http://localhost:8000${item.producto.imagen_url}" → img src="${window.location.origin}${item.producto.imagen_url}"
+6. script.js: fetch("api/categorias.php") → fetch("/api/categorias")

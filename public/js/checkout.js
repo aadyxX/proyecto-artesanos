@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         productos.forEach(item => {
             const productoHTML = `
                 <div class="producto-resumen">
-                    <img src="http://localhost:8000${item.producto.imagen_url}" alt="${item.producto.nombre}">
+                    <img src="${window.location.origin}${item.producto.imagen_url}" alt="${item.producto.nombre}">
                     <div class="producto-info">
                         <h4>${item.producto.nombre}</h4>
                         <p>Cantidad: ${item.cantidad} | Artesano: ${item.artesano.nombre}</p>
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
         btnConfirmar.textContent = 'Procesando...';
 
         try {
-            const response = await fetch('http://localhost:8000/api/usuarios-jwt/checkout', {
+            const response = await fetch(`${window.location.origin}/api/usuarios-jwt/checkout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

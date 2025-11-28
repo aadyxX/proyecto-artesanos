@@ -106,22 +106,22 @@ const response = await fetch(`${API_BASE_URL}/api/usuarios-jwt/miUsuario`, {
         productos.forEach(item => {
         const productoHTML = `
             <div class="producto-item" data-id="${item.id}" data-producto-id="${item.producto.id}" data-stock="${item.producto.stock}">
-                
+
                 <div class="info-producto">
-                    <img src="http://localhost:8000${item.producto.imagen_url}" alt="${item.producto.nombre}" class="imagen-producto">
+                    <img src="${window.location.origin}${item.producto.imagen_url}" alt="${item.producto.nombre}" class="imagen-producto">
                     <div class="detalles-producto">
                         <p class="nombre-producto">${item.producto.nombre}</p>
                         <p class="precio-producto">$${parseFloat(item.producto.precio).toFixed(2)}</p>
                         <button class="btn-eliminar">Eliminar</button>
                     </div>
                 </div>
-                
+
                 <div class="control-cantidad">
                     <button class="btn-cantidad menos">-</button>
                     <input type="number" value="${item.cantidad}" min="1" max="${item.producto.stock}" class="input-cantidad">
                     <button class="btn-cantidad mas">+</button>
                 </div>
-                
+
                 <span class="subtotal-item">$${parseFloat(item.subtotal).toFixed(2)}</span>
             </div>
         `;
@@ -248,7 +248,7 @@ const response = await fetch(`${API_BASE_URL}/api/usuarios-jwt/miUsuario`, {
     // --- FUNCIÓN PARA ACTUALIZAR LA CANTIDAD DE UN PRODUCTO ---
     async function actualizarCantidad(productoId, cantidad) {
         try {
-            const response = await fetch(`http://localhost:8000/api/usuarios-jwt/carrito`, {
+            const response = await fetch(`${window.location.origin}/api/usuarios-jwt/carrito`, {
                 method: 'POST', // El backend usa updateOrCreate, por eso POST
                 headers: {
                     'Content-Type': 'application/json',

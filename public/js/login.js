@@ -1,6 +1,6 @@
 // login.js
 
-const API_URL = "http://localhost:8000/api/usuarios-jwt";
+const API_URL = window.location.origin + "/api/usuarios-jwt";
 document.getElementById("loginForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
